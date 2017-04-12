@@ -42,6 +42,7 @@ def webhook():
                         break
                     except KeyError:
                         send_message(sender_id,"Please stick to text only.Thanks!!")
+                        pass
 
                     #if "hi" in message_text || "hello" in message_text || "hey" in message_text || "hii" in message_text || "yo" in message_text:
                     if any(c in message_text for c in ("hello", "hey", "hii", "hi", "yo")):    
