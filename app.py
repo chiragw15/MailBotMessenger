@@ -39,7 +39,7 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
-                    get_username(recipient_id)
+                    get_username(recipient_id,sender_id)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -52,7 +52,7 @@ def webhook():
 
     return "ok", 200
 
-def get_username(recipient_id):
+def get_username(recipient_id,sender_id):
 
     r = requests.get("https://graph.facebook.com/v2.6/" + recipient_id + "?" + "access_token=" + os.environ["PAGE_ACCESS_TOKEN"])
     data = r.json()
