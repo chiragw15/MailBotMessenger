@@ -57,7 +57,7 @@ def get_username(recipient_id,sender_id):
     url = "https://graph.facebook.com/v2.6/" + recipient_id + "?" + "access_token=" + os.environ["PAGE_ACCESS_TOKEN"] 
     log(url)
     r = requests.get(url)
-    log(status_code)
+    log(r.status_code)
     data = r.json()
     send_message(sender_id, "hi " + data["first_name"]);
 
