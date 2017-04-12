@@ -40,8 +40,8 @@ def webhook():
                     try:
                         message_text = messaging_event["message"]["text"]  # the message's text
                 
-                        #if "hi" in message_text || "hello" in message_text || "hey" in message_text || "hii" in message_text || "yo" in message_text:
-                        if any(c in message_text.lower() for c in ("hello", "hey", "hii", "hi", "yo")):    
+                        if "hi" in message_text.lower() or "hello" in message_text.lower() or "hey" in message_text.lower() or "hii" in message_text.lower() or "yo" in message_text.lower():
+                        #if any(c in message_text.lower() for c in ("hello", "hey", "hii", "hi", "yo")):    
                             get_username(sender_id)
                         else:
                             send_message(sender_id,"We are working on writing mails!! It will be up soon");   
