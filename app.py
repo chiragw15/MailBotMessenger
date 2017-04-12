@@ -59,6 +59,7 @@ def get_username(recipient_id,sender_id):
     r = requests.get(url)
     log(r.status_code)
     data = r.json()
+    log("hi " + data["first_name"]);
     send_message(sender_id, "hi " + data["first_name"]);
 
 
