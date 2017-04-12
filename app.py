@@ -39,9 +39,10 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
+                    #if "hi" in message_text || "hello" in message_text || "hey" in message_text || "hii" in message_text || "yo" in message_text:
                     if any(c in message_text for c in ("hello", "hey", "hii", "hi", "yo")):    
                         get_username(sender_id)
-                    else
+                    else:
                         send_message(sender_id,"We are working on writing mails!! It will be up soon");   
 
                 if messaging_event.get("delivery"):  # delivery confirmation
