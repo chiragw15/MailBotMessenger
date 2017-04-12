@@ -48,7 +48,7 @@ def webhook():
 
                         break
                     except KeyError:
-                        send_message(sender_id,"Please stick to text only.Thanks!!")
+                        send_message(sender_id,"Please stick to text only. Thanks!!")
                         pass
 
                 if messaging_event.get("delivery"):  # delivery confirmation
