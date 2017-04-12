@@ -54,8 +54,8 @@ def webhook():
 
 def get_username(recipient_id):
 
-    r = requests.get("https://graph.facebook.com/v2.6/" + recipient_id + "?" + "access_token=" + os.environ["PAGE_ACCESS_TOKEN"], null, null, null)
-    data = r.get_json()
+    r = requests.get("https://graph.facebook.com/v2.6/" + recipient_id + "?" + "access_token=" + os.environ["PAGE_ACCESS_TOKEN"])
+    data = r.json()
     send_message(sender_id, "hi " + data["first_name"]);
 
 
