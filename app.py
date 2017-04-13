@@ -43,9 +43,11 @@ def webhook():
                         if "hi" in message_text.lower() or "hello" in message_text.lower() or "hey" in message_text.lower() or "hii" in message_text.lower() or "yo" in message_text.lower():
                         #if any(c in message_text.lower() for c in ("hello", "hey", "hii", "hi", "yo")):    
                             get_username(sender_id)
-                        else:
+                            send_message(sender_id,"What can I do for you today?")
+                        elif "write" in message_text.lower() or "mail" in message_text.lower() or "yes" in message_text.lower():    
                             send_message(sender_id,"We are working on writing mails!! It will be up soon");   
-
+                        else
+                            send_message(sender_id,"Sorry, I didn't understand it. Should I write a mail?")
                         break
                     except KeyError:
                         send_message(sender_id,"Please stick to text only. Thanks!!")
