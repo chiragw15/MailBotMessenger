@@ -47,7 +47,7 @@ def webhook():
                         elif "write" in message_text.lower() or "mail" in message_text.lower() or "yes" in message_text.lower():    
                             send_message(sender_id,"We are working on writing mails!! It will be up soon");   
                         else:
-                            send_message(sender_id,"Sorry, I didn't understand it. Should I write a mail?")
+                            send_message(sender_id,"Sorry, I didn't understand that. Should I write a mail?")
                         break
                     except KeyError:
                         send_message(sender_id,"Please stick to text only. Thanks!!")
