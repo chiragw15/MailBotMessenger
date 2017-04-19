@@ -40,13 +40,14 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     try:
                         message_text = messaging_event["message"]["text"]  # the message's text
+                        message_text2 = message_text
                         message_text=(message_text.lower()).split()
                         log(message_text)                
                         if "hi" in message_text or "hello" in message_text or "hey" in message_text or "hii" in message_text or "yo" in message_text:
                         #if any(c in message_text.lower() for c in ("hello", "hey", "hii", "hi", "yo")):    
                             get_username(sender_id)   
                         else:
-                            get_response_for_query(message_text,sender_id)
+                            get_response_for_query(message_text2,sender_id)
                         break
                     except KeyError:
                         send_message(sender_id,"Please stick to text only. Thanks!!")
