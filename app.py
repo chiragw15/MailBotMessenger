@@ -91,7 +91,7 @@ def get_response_for_query(message_text,sender_id):
     
     if response["output"]["text"][0] == null or response["output"]["text"][0] == "":
         send_message(sender_id,"Something went wrong, please try again.")
-    else
+    else:
         send_message(sender_id,response["output"]["text"][0])
 
     log(json.dumps(response, indent=2))
