@@ -76,6 +76,7 @@ def get_response_for_query(message_text,sender_id):
 
     workspace_id = 'f125e325-585c-433c-b460-70d9dab9ec1a'
 
+    log("chirag   " + context)
     response = conversation.message(
         workspace_id=workspace_id,
         message_input={'text': message_text},
