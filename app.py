@@ -84,6 +84,7 @@ def get_response_for_query(message_text,sender_id):
 
     if response["output"]["text"][0] != "I'm sorry, I don't understand. Please try again.":
         context = response["context"]
+        log("chirag chirag chirag")
         log(context)
     
     send_message(sender_id,response["output"]["text"][0])
