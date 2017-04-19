@@ -7,7 +7,7 @@ import requests
 from flask import Flask, request
 
 app = Flask(__name__)
-
+context = {}
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -65,6 +65,7 @@ def webhook():
     return "ok", 200
 
 def get_response_for_query(message_text,sender_id):
+    global context
     conversation = ConversationV1(
         username='b053dacb-cb93-40a2-aee4-b3c2cedb751f',
         password='UrwZSyeVKtgV',
@@ -72,7 +73,6 @@ def get_response_for_query(message_text,sender_id):
     )
 
     # Replace with the context obtained from the initial request
-    context = {}
 
     workspace_id = 'f125e325-585c-433c-b460-70d9dab9ec1a'
 
@@ -81,7 +81,10 @@ def get_response_for_query(message_text,sender_id):
         message_input={'text': message_text},
         context=context
     )
-    context = response["context"]
+    
+    if response["output"]["text"][0] != "I'm sorry, I don't understand. Please try again.":
+        context = response["context"]
+    
     send_message(sender_id,response["output"]["text"][0])
 
     log(json.dumps(response, indent=2))
