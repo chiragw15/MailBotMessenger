@@ -67,7 +67,7 @@ def get_response_for_query(message_text,sender_id):
     conversation = ConversationV1(
         username='b053dacb-cb93-40a2-aee4-b3c2cedb751f',
         password='UrwZSyeVKtgV',
-        version='2017-04-18'
+        version='2017-04-20'
     )
 
     # Replace with the context obtained from the initial request
@@ -80,8 +80,8 @@ def get_response_for_query(message_text,sender_id):
         message_input={'text': message_text},
         context=context
     )
-    context = response["context"]
-    send_message(sender_id,response["output"]["text"])
+    #context = response["context"]
+    send_message(sender_id,response["output"]["text"][0])
 
     log(json.dumps(response, indent=2))
 
