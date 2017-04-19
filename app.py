@@ -81,7 +81,7 @@ def get_response_for_query(message_text,sender_id):
         message_input={'text': message_text},
         context=context
     )
-    #context = response["context"]
+    context = response["context"]
     send_message(sender_id,response["output"]["text"][0])
 
     log(json.dumps(response, indent=2))
