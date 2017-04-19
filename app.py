@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from watson_developer_cloud import ConversationV1
 
 import requests
 from flask import Flask, request
@@ -43,12 +44,9 @@ def webhook():
                         log(message_text)                
                         if "hi" in message_text or "hello" in message_text or "hey" in message_text or "hii" in message_text or "yo" in message_text:
                         #if any(c in message_text.lower() for c in ("hello", "hey", "hii", "hi", "yo")):    
-                            get_username(sender_id)
-                            send_message(sender_id,"What can I do for you today?")
-                        elif "write" in message_text or "mail" in message_text or "yes" in message_text:    
-                            send_message(sender_id,"We are working on writing mails!! It will be up soon");   
+                            get_username(sender_id)   
                         else:
-                            send_message(sender_id,"Sorry, I didn't understand that. Should I write a mail?")
+                            get_response_for_query(message_text,sender_id)
                         break
                     except KeyError:
                         send_message(sender_id,"Please stick to text only. Thanks!!")
@@ -64,6 +62,28 @@ def webhook():
                     pass
 
     return "ok", 200
+
+def get_response_for_query(message_text,sender_id):
+    conversation = ConversationV1(
+        username='b053dacb-cb93-40a2-aee4-b3c2cedb751f',
+        password='UrwZSyeVKtgV',
+        version='2017-04-18'
+    )
+
+    # Replace with the context obtained from the initial request
+    context = {}
+
+    workspace_id = 'f125e325-585c-433c-b460-70d9dab9ec1a'
+
+    response = conversation.message(
+        workspace_id=workspace_id,
+        message_input={'text': message_text},
+        context=context
+    )
+    context = response["context"]
+    send_message(sender_id,response["output"]["text"])
+
+    log(json.dumps(response, indent=2))
 
 def get_username(sender_id):
 
