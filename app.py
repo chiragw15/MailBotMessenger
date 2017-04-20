@@ -8,7 +8,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 context = {}
-log("cccccccccccccccccccc")
+print("cccccccccccccccccccc")
 @app.route('/', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back
