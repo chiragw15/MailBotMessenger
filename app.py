@@ -7,7 +7,7 @@ import requests
 from flask import Flask, request
 
 app = Flask(__name__)
-context = {}
+contextt = {}
 print("cccccccccccccccccccc")
 @app.route('/', methods=['GET'])
 def verify():
@@ -65,7 +65,7 @@ def webhook():
     return "ok", 200
 
 def get_response_for_query(message_text,sender_id):
-    global context
+    global contextt
     conversation = ConversationV1(
         username='b053dacb-cb93-40a2-aee4-b3c2cedb751f',
         password='UrwZSyeVKtgV',
@@ -77,17 +77,17 @@ def get_response_for_query(message_text,sender_id):
     workspace_id = 'f125e325-585c-433c-b460-70d9dab9ec1a'
 
     log("chirag")
-    log(context)
+    log(contextt)
     response = conversation.message(
         workspace_id=workspace_id,
         message_input={'text': message_text},
-        context=context
+        context=contextt
     )
 
     if response["output"]["text"][0] != "I'm sorry, I don't understand. Please try again.":
-        context = response["context"]
+        contextt = response["context"]
         log("chirag chirag chirag")
-        log(context)
+        log(contextt)
     
     if response["output"]["text"][0] == None or response["output"]["text"][0] == "":
         send_message(sender_id,"Something went wrong, please try again.")
