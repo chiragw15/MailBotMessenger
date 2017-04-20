@@ -69,7 +69,7 @@ def get_response_for_query(message_text,sender_id):
     conversation = ConversationV1(
         username='b053dacb-cb93-40a2-aee4-b3c2cedb751f',
         password='UrwZSyeVKtgV',
-        version='2017-04-20'
+        version='2017-04-19'
     )
 
     # Replace with the context obtained from the initial request
